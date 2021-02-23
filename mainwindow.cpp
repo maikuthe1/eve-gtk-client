@@ -60,6 +60,7 @@ MainWindow::MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 	s.signalPartyInvite.connect(sigc::mem_fun(*this, &MainWindow::PartyInvite));
 	s.signalPartyCreate.connect(sigc::mem_fun(*this, &MainWindow::PartyCreate));
 	s.signalPartyClose.connect(sigc::mem_fun(*this, &MainWindow::PartyClose));
+	s.signalMessageBoxOpened.connect(sigc::mem_fun(*this, &MainWindow::MessageBoxOpened));
 	preferencesButton->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::PreferencesButtonClicked));
 	logoutButton->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::LogoutButtonClicked));
 	//inventoryButton->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::LogoutButtonClicked));
@@ -215,6 +216,11 @@ void MainWindow::PartyClose(){
 	//DraggableBox* partyWindow = Gtk::manage(new DraggableBox((Gtk::Window*)this, mainOverlay, new PartyBox(), "Party", "party-symbolic", 100, 300));
 	//partyBox = Gtk::manage(new PartyBox());
 	//partyExpander->add(*partyBox);
+}
+
+void MainWindow::MessageBoxOpened(std::string title, std::string message){
+	EOMessageBox *newMessageBox = Gtk::manage(new EOMessageBox(title, message));
+	DraggableBox *newDraggable = new DraggableBox((Gtk::Window*)this, mainOverlay, newMessageBox, title, "chat-symbolic", 250, 269);
 }
 
 void MainWindow::ToggleButtonClicked(Gtk::Widget *widget){

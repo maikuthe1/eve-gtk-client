@@ -46,12 +46,13 @@ public:
 	sigc::signal<void, Character*> signalPartyAdd;
 	sigc::signal<void> signalPartyClose;
 	sigc::signal<void, std::string> signalMessageNotDelivered;
+	sigc::signal<void, std::string, std::string> signalMessageBoxOpened;
 	sigc::signal<void> signalPartyCreate;
 	sigc::signal<void, unsigned char, unsigned short, std::string> signalPartyInvite;
 	sigc::signal<void, short, int> signalInventoryAdd;
 	sigc::signal<void, short, int> signalInventoryRemove;
 	sigc::signal<void, short, int> signalInventoryChange;
-	
+
 	int times = 0;
     S(S const&)               = delete;
     void operator=(S const&)  = delete;

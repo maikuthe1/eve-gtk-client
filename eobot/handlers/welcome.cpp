@@ -134,8 +134,8 @@ void Welcome_Reply(PacketReader reader)
 			unsigned short itemID = reader.GetShort();
 			EIF_Data itemData = s.eif->Get(itemID);
 		}
-			
-			
+
+
 		PacketBuilder packet(PacketFamily::Welcome, PacketAction::Message);
 		packet.AddThree(1);
 		packet.AddInt(s.character.id);
@@ -242,7 +242,7 @@ void Welcome_Reply(PacketReader reader)
 			item.data = shared_ptr<EIF_Data>(new EIF_Data(s.eif->Get(id)));
 			s.map.items.push_back(item);
 		}
-		
+
 		s.eoclient.UnregisterHandler(PacketFamily::Login, PacketAction::Reply);
 		s.eoclient.UnregisterHandler(PacketFamily::Welcome, PacketAction::Reply);
 		s.eoclient.RegisterHandler(PacketFamily::Players, PacketAction::Agree, Players_Agree);
@@ -288,7 +288,8 @@ void Welcome_Reply(PacketReader reader)
 		s.eoclient.RegisterHandler(PacketFamily::Party, PacketAction::Agree, Party_Agree);
 		s.eoclient.RegisterHandler(PacketFamily::Paperdoll, PacketAction::Agree, Paperdoll_Agree);
 		s.eoclient.RegisterHandler(PacketFamily::Paperdoll, PacketAction::Remove, Paperdoll_Remove);
-		
+		s.eoclient.RegisterHandler(PacketFamily::Message, PacketAction::Accept, Message_Box);
+
 		//s.eoclient.RegisterHandler(PacketFamily::Recover, PacketAction::Agree, Recover_Agree); // non local player heals
 
 		s.eoclient.SetState(EOClient::State::Playing);

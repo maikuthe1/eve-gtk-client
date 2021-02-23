@@ -340,7 +340,7 @@ void EOClient::Tick()
 					PacketReader reader(this->processor.Decode(this->data));
 
 					if(s.config.GetValue("ShowDebug") == "on"){
-						logger->Log("[Server] " + this->processor.GetFamilyName(reader.Family()) + ":" + this->processor.GetActionName(reader.Action()));
+						logger->Log("[Server] " + this->processor.GetFamilyName(reader.Family()) + ":" + this->processor.GetActionName(reader.Action()), LogTypes::Packet);
 						printf("[Server] %s:%s\n", this->processor.GetFamilyName(reader.Family()).c_str(), this->processor.GetActionName(reader.Action()).c_str());
 					}
 					this->HandleData(this->data);

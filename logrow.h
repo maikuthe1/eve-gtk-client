@@ -26,6 +26,10 @@ public:
 			iconName = "dialog-information";
 			formattedText = Glib::ustring::compose("<span font_desc=\"monospace 9\" >%1</span>",text);
 		}
+		if(type == LogTypes::Packet){
+			iconName = "dialog-information";
+			formattedText = Glib::ustring::compose("<span font_desc=\"monospace 9\" >%1</span>",text);
+		}
 		if(type == LogTypes::Warning){
 			iconName = "dialog-warning";
 			formattedText = Glib::ustring::compose("<span font_desc=\"monospace 9\" foreground=\"#c1c17d7d1111\">\%1</span>", text);

@@ -15,5 +15,6 @@ int path_length(int x1, int y1, int x2, int y2);
 std::vector<std::string> Args(std::string str);
 std::string Lowercase(std::string str);
 std::vector<std::string> explode2(const std::string, const std::string);
+std::string BreakString(std::string theString);
 
 #endif // UTIL_HPP_INCLUDED
