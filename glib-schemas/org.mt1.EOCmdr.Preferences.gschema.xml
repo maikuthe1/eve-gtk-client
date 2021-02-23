@@ -1,0 +1,93 @@
+<schemalist>
+  <schema path="/org/mt1/eocmdr/Preferences/" id="org.mt1.EOCmdr.Preferences">
+	<key type="s" name="ip">
+			<default>'127.0.0.1'</default>
+			<summary>The server IP to connect to</summary>
+				<description>
+					The server IP to connect to
+				</description>
+	</key>
+  <key type="s" name="port">
+			<default>'8078'</default>
+			<summary>The server port to use</summary>
+				<description>
+					The server port to use
+				</description>
+	</key>
+  <key type="b" name="remember-account">
+      <default>true</default>
+      <summary>Remember your account details</summary>
+      <description>
+       Remember your account details
+      </description>
+  </key>
+  <key type="s" name="account-name">
+			<default>''</default>
+			<summary>The account name to use</summary>
+				<description>
+					The account name to use
+				</description>
+	</key>
+  <key type="s" name="password">
+			<default>''</default>
+			<summary>The password to use</summary>
+				<description>
+					The password to use
+				</description>
+	</key>
+	    <key type="b" name="show-log-in-statusbar">
+      <default>false</default>
+      <summary>Show recent log entry in statusbar</summary>
+      <description>
+        Whether or not to show the most recent log entry in the statusbar
+      </description>
+    </key>
+	<key type="b" name="use-animations">
+      <default>true</default>
+      <summary>Use animations in GUI</summary>
+      <description>
+        Whether or not to use animations in the GUI
+      </description>
+    </key>
+	<key name="theme" type="s">
+      <choices>
+        <choice value='materia-light-compact'/>
+        <choice value='materia-dark-compact'/>
+        <choice value='kde-story'/>
+        <choice value='adwaita'/>
+        <choice value='newadwaita-slim'/>
+        <choice value='gnome-pro'/>
+      </choices>
+      <default>'materia-dark-compact'</default>
+      <summary>Application theme</summary>
+      <description>The theme used for the application</description>
+    </key>
+	<key type="b" name="dark-mode">
+      <default>false</default>
+      <summary>Application wide dark mode</summary>
+      <description>
+       Application wide dark mode
+      </description>
+    </key>
+	<key name="icon-theme" type="s">
+      <choices>
+        <choice value='adwaita'/>
+        <choice value='mcmojave-circle'/>
+        <choice value='mcmojave-circle-dark'/>
+      </choices>
+      <default>'mcmojave-circle-dark'</default>
+      <summary>Application icon theme</summary>
+      <description>The icon theme used for the application</description>
+    </key>
+	<key name="font" type="s">
+      <default>'Segoe UI Normal 9'</default>
+      <summary>Application font</summary>
+      <description>The font name used for the application</description>
+    </key>
+	<key name="window-transparency" type="d">
+      <default>1.0</default>
+      <summary>Window transparency</summary>
+      <description>Window transparency</description>
+    </key>
+  </schema>
+</schemalist>

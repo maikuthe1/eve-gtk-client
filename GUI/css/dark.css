@@ -1,0 +1,94 @@
+*{
+	outline: none;
+	border-radius: 0px;
+}
+
+.testframe{
+	border-radius: 6px;
+	background: rgba(30,30,30,0.9);
+	margin: 3px;
+	padding: 3px;
+	text-shadow: 1px 1px 0px black;
+	box-shadow: 0px 0px 2px black;
+}
+
+.PlayerExpander{
+	background: rgba(200,200,200,0.1);
+}
+
+.MapGrid{
+	background-size: 27px 27px;
+	background-image:
+		linear-gradient(to right, rgba(200,200,200,1) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(200,200,200,1) 1px, transparent 1px);
+	border-bottom: 1px solid rgba(255,255,255,1);
+	border-right: 1px solid rgba(255,255,255,1);
+	padding-right: 1px;
+	box-shadow: 0px 0px 8px #006262;
+}
+.MapGrid>.enemy{
+	box-shadow: 0px 0px 3px #ff4231;
+}
+.MapGrid>.self{
+	box-shadow: 0px 0px 3px #ff8c29;
+}
+.MapGrid>.player{
+	box-shadow: 0px 0px 3px #19b500;
+}
+.MapGrid>.npc{
+	box-shadow: 0px 0px 3px #a500bd;
+}
+.MapGrid>image{
+	margin-left: 1px; margin-right:-1px;
+	margin-top: 1px; margin-bottom:-1px;
+}
+decoration{
+	/*border: 1px solid #006262;*/
+}
+.MapOverlay, .LogShadow{
+	text-shadow: 1px 1px 0px rgba(0,0,0,1);
+}
+.MapScroll{
+	box-shadow: inset 0px 0px 8px black;
+}
+entry.flat{
+	border: none;
+}
+.overlay{
+	background: rgba(0,0,0,0.8);
+}
+.closeButton{
+	min-width: 0px;
+	border-radius: 0px;
+	min-height: 0px;
+}
+.message{
+	background: rgba(0,0,0,0.2);
+	padding: 3px;
+	box-shadow: 0px 0px 3px rgba(0,0,0,0.2);
+}
+.guildTag{
+	font-family: monospace;
+}
+decoration{
+	box-shadow: none;
+}
+.draggableHeader{
+min-height: 0px;
+}
+.dock{
+	background: linear-gradient(90deg,  alpha(#212121, 0.8) 75%,  alpha(#212121, 0) 99%);
+	border: none;
+	border-right: none;
+	padding-right: 5px;
+}
+.jt, .jt1{
+	margin-top: 3px;
+	box-shadow: none;
+}
+.jt{
+	
+}
+
+
+

@@ -1,0 +1,60 @@
+<schemalist>
+	<schema path="/org/mt1/eocmdr/settings/" id="org.mt1.EOCmdr.Settings">
+		<key type="b" name="log-visible">
+			<default>false</default>
+			<summary>Whether the log is is visible</summary>
+			<description>
+				Whether or not to show the log on start
+			</description>
+		</key>
+		<key type="b" name="inventory-visible">
+			<default>false</default>
+			<summary>Whether the inventory is is visible</summary>
+			<description>
+				Whether or not to show the inventory on start
+			</description>
+		</key>
+		<key type="b" name="character-visible">
+			<default>false</default>
+			<summary>Whether the character is is visible</summary>
+			<description>
+				Whether or not to show the character on start
+			</description>
+		</key>
+		<key type="b" name="chat-visible">
+			<default>false</default>
+			<summary>Whether the chat is is visible</summary>
+			<description>
+				Whether or not to show the chat on start
+			</description>
+		</key>
+		<key type="b" name="map-visible">
+			<default>false</default>
+			<summary>Whether the map is is visible</summary>
+			<description>
+				Whether or not to show the map on start
+			</description>
+		</key>
+		<key type="b" name="spells-visible">
+			<default>false</default>
+			<summary>Whether the spells is is visible</summary>
+			<description>
+				Whether or not to show the spells on start
+			</description>
+		</key>
+		<key type="b" name="paperdoll-visible">
+			<default>false</default>
+			<summary>Whether the paperdoll is is visible</summary>
+			<description>
+				Whether or not to show the paperdoll on start
+			</description>
+		</key>
+		<key type="b" name="players-visible">
+			<default>false</default>
+			<summary>Whether the players is is visible</summary>
+			<description>
+				Whether or not to show the players on start
+			</description>
+		</key>
+	</schema>
+</schemalist>

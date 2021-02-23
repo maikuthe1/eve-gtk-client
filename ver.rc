@@ -1,0 +1,22 @@
+1 VERSIONINFO
+FILEVERSION     1,0,0,0
+PRODUCTVERSION  1,0,0,0
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "080904E4"
+    BEGIN
+      VALUE "CompanyName", "MT1"
+      VALUE "FileDescription", "Endless online automation tool"
+      VALUE "FileVersion", "1.0"
+      VALUE "InternalName", "eocmdr"
+      VALUE "LegalCopyright", "2020 MT1"
+      VALUE "ProductName", "Eo Cmdr"
+      VALUE "ProductVersion", "1.0"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x409, 1252
+  END
+END
