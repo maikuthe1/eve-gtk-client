@@ -1,7 +1,4 @@
 #include "mainwindow.h"
-#include "logger.h"
-#include <fstream>
-
 
 MainWindow::MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refGlade) :
 	Gtk::Window(cobject), builder(refGlade){

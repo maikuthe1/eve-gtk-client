@@ -62,6 +62,7 @@ void Party_List(PacketReader reader);
 void Party_Agree(PacketReader reader);
 void Paperdoll_Agree(PacketReader reader);
 void Paperdoll_Remove(PacketReader reader);
+void Paperdoll_Reply(PacketReader reader);
 void Message_Box(PacketReader reader);
 
 #endif // HANDLERS_HPP_INCLUDED

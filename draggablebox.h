@@ -20,60 +20,61 @@ protected:
 			return (i/m+1)*m;
 		return i/m*m;
 	}
-	
+
 	Glib::RefPtr<Gtk::Builder> builder;
-	
+
 	// Grid
 	Gtk::Grid* mainGrid;
-	
+
 	// Seperators
 	Gtk::Separator *topSeparator, *rightSeparator, *bottomSeparator, *leftSeparator, *tlSeparator, *trSeparator, *blSeparator, *brSeparator;
-	
+
 	// Settings
 	Glib::RefPtr<Gio::Settings> gioSettings;
 	Glib::RefPtr<Gtk::Settings> gtkSettings;
-	
+
 	// Bindings
 	Glib::RefPtr<Glib::Binding> transparencyBind;
-	
+
 	// Headerbars
 	Gtk::HeaderBar *titlebar;
-	
+
 	// Eventboxes
 	Gtk::EventBox *titleEventBox, *topSeparatorEventBox, *rightSeparatorEventBox, *bottomSeparatorEventBox, *leftSeparatorEventBox, *tlSeparatorEventBox, *trSeparatorEventBox, *blSeparatorEventBox, *brSeparatorEventBox;
-	
+
 	// Images
 	Gtk::Image *icon;
-	
+
 	// Fixeds
-	
+
 	// Overlays
 	Gtk::Overlay *mainOverlay;
-	
+
 	// Windows
 	Gtk::Window *win;
-	
+
 	// Labels
 	Gtk::Label *titleLabel;
-	
+
 	// Boxes
 	Gtk::Box *titleBox, *contentBox;
-	
+
 	// Buttons
 	Gtk::Button *closeButton;
-	
+
 	bool MouseDown(GdkEventButton* event);
 	bool MouseUp(GdkEventButton* event);
 	bool MouseMoved(GdkEventMotion* event);
 	bool CrossBorder(GdkEventCrossing* event, Gtk::Widget* widget);
 	bool BorderDrag(GdkEventMotion* event, Gtk::Widget* widget);
-	
+
 	int offsetx, offsety, px, py, maxx, maxy;
 	Glib::RefPtr<Gdk::Window> www;
 	Glib::RefPtr<Gdk::Display> display;
+	bool permanent;
 	void OnShow();
 public:
-	DraggableBox(Gtk::Window* mainWin, Gtk::Overlay *overlay, Gtk::Widget* content, Glib::ustring title, Glib::ustring iconName, unsigned int width, unsigned int height, Gtk::Orientation orientation = Gtk::ORIENTATION_VERTICAL, bool showCloseButton = true);
+	DraggableBox(Gtk::Window* mainWin, Gtk::Overlay *overlay, Gtk::Widget* content, Glib::ustring title, Glib::ustring iconName, unsigned int width, unsigned int height, Gtk::Orientation orientation = Gtk::ORIENTATION_VERTICAL, bool showCloseButton = true, bool permanent = true);
 	Gtk::HeaderBar* GetTitlebar(){
 		return titlebar;
 	}

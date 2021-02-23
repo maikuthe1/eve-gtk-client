@@ -35,12 +35,15 @@ protected:
 		int index = 0;
 		int count = 1;
 		for(char currChar : theString){
-			count += sizes[currChar];
-			if(count >= maxWidth){
+			if(count + sizes[currChar] >= maxWidth){
 				count = 0;
 				theString.insert(index, "\n");
+				index++;
 			}
-			index++;
+			else{
+				count += sizes[currChar];
+				index++;
+			}
 		}
 
 		return theString;

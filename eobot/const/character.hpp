@@ -1,6 +1,9 @@
 #ifndef CONST_CHARACTER_HPP_INCLUDED
 #define CONST_CHARACTER_HPP_INCLUDED
 
+#include <string>
+#include <array>
+
 enum class AdminLevel : unsigned char
 {
     Player = 0,
@@ -9,6 +12,25 @@ enum class AdminLevel : unsigned char
     GM = 3,
     HGM = 4
 };
+
+enum EquipLocation
+	{
+		Boots,
+		Accessory,
+		Gloves,
+		Belt,
+		Armor,
+		Necklace,
+		Hat,
+		Shield,
+		Weapon,
+		Ring1,
+		Ring2,
+		Armlet1,
+		Armlet2,
+		Bracer1,
+		Bracer2
+	};
 
 enum class Direction : unsigned char
 {
@@ -135,6 +157,16 @@ enum class BookIcon : short
     Talk = 5,
     Kill = 8,
     Step = 10
+};
+
+struct Paperdoll{
+	std::string name, home, partner, title, guild, guildRank;
+	short id;
+	char clas, gender;
+	std::array<int, 15> paperdoll_data;
+	std::array<int, 15> cosmetic_paperdoll_data;
+	std::array<int, 15> preview_paperdoll_data;
+	PaperdollIcon icon;
 };
 
 #endif // CONST_CHARACTER_HPP_INCLUDED

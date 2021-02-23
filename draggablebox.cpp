@@ -1,15 +1,15 @@
 #include "draggablebox.h"
 
-DraggableBox::DraggableBox(Gtk::Window* mainWin, Gtk::Overlay *overlay, Gtk::Widget* content, Glib::ustring title, Glib::ustring iconName, unsigned int width, unsigned int height, Gtk::Orientation orientation, bool showCloseButton){
+DraggableBox::DraggableBox(Gtk::Window* mainWin, Gtk::Overlay *overlay, Gtk::Widget* content, Glib::ustring title, Glib::ustring iconName, unsigned int width, unsigned int height, Gtk::Orientation orientation, bool showCloseButton, bool permanent){
 	//std::vector<Gtk::Widget*> children = get_children();
 	mainOverlay = overlay;
 	win = mainWin;
-	
+
 	gioSettings = Gio::Settings::create("org.mt1.EOCmdr.Preferences");
 	gtkSettings = Gtk::Settings::get_for_screen(Gdk::Screen::get_default());
-	
+
 	 gioSettings->bind("window-transparency", property_opacity());
-	
+
 	// The grid
 	mainGrid = Gtk::manage(new Gtk::Grid());
 	mainGrid->set_size_request(width, height);
@@ -21,47 +21,47 @@ DraggableBox::DraggableBox(Gtk::Window* mainWin, Gtk::Overlay *overlay, Gtk::Wid
 	mainGrid->insert_column(2);
 	mainGrid->set_column_homogeneous(false);
 	mainGrid->set_row_homogeneous(false);
-	
+
 	topSeparatorEventBox = Gtk::manage(new Gtk::EventBox());
 	topSeparator = Gtk::manage(new Gtk::Separator(Gtk::ORIENTATION_HORIZONTAL));
 	topSeparatorEventBox->add(*topSeparator);
 	topSeparator->set_size_request(-1, 3);
-	
+
 	bottomSeparatorEventBox = Gtk::manage(new Gtk::EventBox());
 	bottomSeparator = Gtk::manage(new Gtk::Separator(Gtk::ORIENTATION_HORIZONTAL));
 	bottomSeparatorEventBox->add(*bottomSeparator);
 	bottomSeparator->set_size_request(-1, 3);
-	
+
 	rightSeparatorEventBox = Gtk::manage(new Gtk::EventBox());
 	rightSeparator = Gtk::manage(new Gtk::Separator(Gtk::ORIENTATION_VERTICAL));
 	rightSeparatorEventBox->add(*rightSeparator);
 	rightSeparator->set_size_request(3, -1);
-	
+
 	leftSeparatorEventBox = Gtk::manage(new Gtk::EventBox());
 	leftSeparator = Gtk::manage(new Gtk::Separator(Gtk::ORIENTATION_VERTICAL));
 	leftSeparatorEventBox->add(*leftSeparator);
 	leftSeparator->set_size_request(3, -1);
-	
+
 	tlSeparatorEventBox = Gtk::manage(new Gtk::EventBox());
 	tlSeparator = Gtk::manage(new Gtk::Separator(Gtk::ORIENTATION_VERTICAL));
 	tlSeparatorEventBox->add(*tlSeparator);
 	tlSeparator->set_size_request(3, 3);
-	
+
 	trSeparatorEventBox = Gtk::manage(new Gtk::EventBox());
 	trSeparator = Gtk::manage(new Gtk::Separator(Gtk::ORIENTATION_VERTICAL));
 	trSeparatorEventBox->add(*trSeparator);
 	trSeparator->set_size_request(3, 3);
-	
+
 	blSeparatorEventBox = Gtk::manage(new Gtk::EventBox());
 	blSeparator = Gtk::manage(new Gtk::Separator(Gtk::ORIENTATION_VERTICAL));
 	blSeparatorEventBox->add(*blSeparator);
 	blSeparator->set_size_request(3, 3);
-	
+
 	brSeparatorEventBox = Gtk::manage(new Gtk::EventBox());
 	brSeparator = Gtk::manage(new Gtk::Separator(Gtk::ORIENTATION_VERTICAL));
 	brSeparatorEventBox->add(*brSeparator);
 	brSeparator->set_size_request(3, 3);
-	
+
 	mainGrid->attach(*topSeparatorEventBox, 1,0);
 	mainGrid->attach(*rightSeparatorEventBox, 2,1);
 	mainGrid->attach(*bottomSeparatorEventBox, 1,2);
@@ -70,7 +70,7 @@ DraggableBox::DraggableBox(Gtk::Window* mainWin, Gtk::Overlay *overlay, Gtk::Wid
 	mainGrid->attach(*trSeparatorEventBox, 2,0);
 	mainGrid->attach(*blSeparatorEventBox, 0,2);
 	mainGrid->attach(*brSeparatorEventBox, 2,2);
-	
+
 	// Title
 	titleEventBox = Gtk::manage(new Gtk::EventBox());
 	titleBox = Gtk::manage(new Gtk::Box((orientation == Gtk::ORIENTATION_HORIZONTAL) ? Gtk::ORIENTATION_VERTICAL : Gtk::ORIENTATION_HORIZONTAL, 3));
@@ -86,7 +86,7 @@ DraggableBox::DraggableBox(Gtk::Window* mainWin, Gtk::Overlay *overlay, Gtk::Wid
 	headerContext->add_class("draggableHeader");
 	titlebar->set_custom_title(*titleBox);
 	titleEventBox->add(*titlebar);
-	
+
 	// Content
 	contentBox = Gtk::manage(new Gtk::Box(orientation));
 	contentBox->pack_start(*titleEventBox, false, false);
@@ -98,8 +98,8 @@ DraggableBox::DraggableBox(Gtk::Window* mainWin, Gtk::Overlay *overlay, Gtk::Wid
 	contentBox->set_homogeneous(false);
 	Glib::RefPtr<Gtk::StyleContext> mainContext = contentBox->get_style_context();
 	mainContext->add_class("window");
-	
-	
+
+
 	if(showCloseButton){
 		closeButton = Gtk::manage(new Gtk::Button("X"));
 		titlebar->pack_end(*closeButton);
@@ -130,13 +130,13 @@ DraggableBox::DraggableBox(Gtk::Window* mainWin, Gtk::Overlay *overlay, Gtk::Wid
 	blSeparatorEventBox->signal_enter_notify_event().connect(sigc::bind<Gtk::Widget*>(sigc::mem_fun(*this, &DraggableBox::CrossBorder), blSeparator), false);
 	brSeparatorEventBox->signal_motion_notify_event().connect(sigc::bind<Gtk::Widget*>(sigc::mem_fun(*this, &DraggableBox::BorderDrag), brSeparator), false);
 	brSeparatorEventBox->signal_enter_notify_event().connect(sigc::bind<Gtk::Widget*>(sigc::mem_fun(*this, &DraggableBox::CrossBorder), brSeparator), false);
-	
+
 	add(*mainGrid);
 	mainOverlay->add_overlay(*this);
 	show_all();
 	set_halign(Gtk::ALIGN_START);
 	set_valign(Gtk::ALIGN_START);
-	
+
 	signal_show().connect(sigc::mem_fun(*this, &DraggableBox::OnShow));
 }
 
@@ -145,7 +145,10 @@ void DraggableBox::OnShow(){
 }
 
 void DraggableBox::Hide(){
-	hide();
+	if(permanent)
+		hide();
+	else
+		delete this;
 }
 
 bool DraggableBox::BorderDrag(GdkEventMotion* event, Gtk::Widget* widget){

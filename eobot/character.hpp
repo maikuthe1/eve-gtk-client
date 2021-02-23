@@ -18,73 +18,75 @@ protected:
 	unsigned short max_hp;
 	unsigned char hp_percent;
 	bool partyLeader;
-    int exp;
-    int usage;
+	int exp;
+	int usage;
 
-    short tp;
-    short max_tp;
-    short max_sp;
+	short tp;
+	short max_tp;
+	short max_sp;
 
-    short stat_points;
-    short skill_points;
+	short stat_points;
+	short skill_points;
 
-    short karma;
+	short karma;
 
-    short min_dam;
-    short max_dam;
+	short min_dam;
+	short max_dam;
 
-    short accuracy;
-    short evade;
-    short armor;
+	short accuracy;
+	short evade;
+	short armor;
 
-    short str;
-    short wis;
-    short intl;
-    short agi;
-    short con;
-    short cha;
-	
+	short str;
+	short wis;
+	short intl;
+	short agi;
+	short con;
+	short cha;
+
 	PaperdollIcon icon;
-    unsigned char level;
-	
+	unsigned char level;
+
 public:
 
-    std::string name;
-    unsigned int id;
-    short gameworld_id;
+	std::string name;
+	unsigned int id;
+	short gameworld_id;
 
-    std::string title;
-    std::string guild;
-    std::string guild_rank;
-    std::string guild_tag;
-    std::string paperdoll;
+	std::string title;
+	std::string guild;
+	std::string guild_rank;
+	std::string guild_tag;
+	std::array<int, 15> paperdoll;
+	std::array<int, 15> cosmetic_paperdoll;
+	std::array<int, 15> preview_paperdoll;
 	sigc::signal<void, ChangeType> signalChanged;
 
-    unsigned char clas;
+	unsigned char clas;
 
-    unsigned int attacks = 0;
-    unsigned int maxAttacks = 250;
+	unsigned int attacks = 0;
+	unsigned int maxAttacks = 250;
 
-    AdminLevel admin_level;
+	AdminLevel admin_level;
 
 
-    short weight;
-    short max_weight;
+	short weight;
+	short max_weight;
 
-    unsigned char x;
-    unsigned char newX;
-    unsigned char y;
-    unsigned char newY;
-    Direction direction;
-    Gender gender;
-    unsigned char hair_style;
-    unsigned char hair_color;
-    Skin race;
+	unsigned char x;
+	unsigned char newX;
+	unsigned char y;
+	unsigned char newY;
+	Direction direction;
+	Gender gender;
+	unsigned char hair_style;
+	unsigned char hair_color;
+	Skin race;
 
-    SitState sitting;
-    unsigned char visibility;
+	SitState sitting;
+	unsigned char visibility;
 
-    sf::Clock command_clock;
+	sf::Clock command_clock;
 
 	Character();
 	short GetHP();

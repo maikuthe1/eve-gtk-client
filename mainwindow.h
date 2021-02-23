@@ -14,6 +14,9 @@
 #include "inventoryscrolledwindow.h"
 #include "menubarbutton.h"
 #include "messagebox.h"
+#include "logger.h"
+#include <fstream>"
+#include "paperdollbox.h"
 
 class LocalPlayerEventBox : public Gtk::EventBox{
 protected:

@@ -47,6 +47,7 @@ public:
 	sigc::signal<void> signalPartyClose;
 	sigc::signal<void, std::string> signalMessageNotDelivered;
 	sigc::signal<void, std::string, std::string> signalMessageBoxOpened;
+	sigc::signal<void, Paperdoll> signalPaperdollOpened;
 	sigc::signal<void> signalPartyCreate;
 	sigc::signal<void, unsigned char, unsigned short, std::string> signalPartyInvite;
 	sigc::signal<void, short, int> signalInventoryAdd;
