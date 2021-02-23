@@ -1,0 +1,10 @@
+*.txt
+*.project
+*.mk
+intermediate/
+out/
+Debug/
+*_o/
+Debug_o/
+Release/
+Release_o/
