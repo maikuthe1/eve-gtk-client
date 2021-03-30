@@ -15,7 +15,7 @@
 #include "menubarbutton.h"
 #include "messagebox.h"
 #include "logger.h"
-#include <fstream>"
+#include <fstream>
 #include "paperdollbox.h"
 
 class LocalPlayerEventBox : public Gtk::EventBox{
@@ -66,7 +66,7 @@ protected:
 	// Expanders
 	Gtk::Expander *localExpander, *partyExpander, *onlineExpander;
 
-	// Boxes
+	// BoxesclTabCtrl
 	ChatBox *chatBox;
 	Gtk::Box *localBox, *onlineBox, *logBox, *characterBox;
 	PartyBox *partyBox;
@@ -125,6 +125,7 @@ protected:
 	void PartyCreate();
 	void PartyClose();
 	void MessageBoxOpened(std::string title, std::string message);
+	void OpenPaperdoll();
 
 public:
 	MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refGlade);

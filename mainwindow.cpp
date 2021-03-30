@@ -90,6 +90,17 @@ MainWindow::MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 	itemBox = Gtk::manage(new Gtk::Box());
 	icon = Gtk::manage(new Gtk::Image());
 	label = Gtk::manage(new Gtk::Label());
+	icon->set_from_icon_name("media-playlist-shuffle-symbolic", Gtk::ICON_SIZE_MENU);
+	label->set_text("Paperdoll");
+	itemBox->pack_start(*icon);
+	itemBox->pack_start(*label);
+	item = Gtk::manage(new Gtk::MenuItem(*itemBox));
+	item->signal_activate().connect(sigc::mem_fun(this, &MainWindow::OpenPaperdoll));
+	playerRightClickMenu->append(*item);
+
+	itemBox = Gtk::manage(new Gtk::Box());
+	icon = Gtk::manage(new Gtk::Image());
+	label = Gtk::manage(new Gtk::Label());
 	icon->set_from_icon_name("network-transmit-symbolic", Gtk::ICON_SIZE_MENU);
 	label->set_text("Invite");
 	itemBox->pack_start(*icon);
@@ -146,7 +157,6 @@ MainWindow::MainWindow(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 	std::ofstream stream("output.bmp", std::ios::binary | std::ios::out);
 	stream.write((char*)pixels, pixBuf->get_byte_length());
 	stream.close();
-
 
 	int channels;
 	int rowstride;
@@ -331,6 +341,11 @@ bool MainWindow::PlayerClicked(GdkEventButton* event, LocalPlayerFrame* playerFr
 		playerRightClickMenu->popup_at_pointer((GdkEvent*)event);
 	}
 	return false;
+}
+
+void MainWindow::OpenPaperdoll(){
+	PaperdollBox *pbox = new PaperdollBox(selectedCharacter);
+	DraggableBox *draggy = new DraggableBox((Gtk::Window*)this, mainOverlay, (Gtk::Widget*)pbox, selectedCharacter.name, "chat-symbolic", 0, 0);
 }
 
 bool MainWindow::MousePressed(GdkEventButton* event){

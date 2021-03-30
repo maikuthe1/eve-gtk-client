@@ -71,7 +71,13 @@ enum class ChangeType : unsigned char
 	General = 27,
 	Level = 28,
 	SP = 29,
-	Karma = 30
+	Karma = 30,
+	Title = 31,
+	Partner = 32,
+	Guild = 33,
+	GuildRank = 34,
+	Home = 35,
+	Clas = 36
 };
 
 enum class Emote : unsigned char

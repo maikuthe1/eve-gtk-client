@@ -51,6 +51,9 @@ void Players_Agree(PacketReader reader)
 	character.visibility = reader.GetChar();
 	reader.GetByte(); // 255
 	reader.GetByte(); // 0 = NPC, 1 = player
+
+
+	// Online playerlist
 	for(unsigned int i = 0; i < s.onlineList.size(); i++){
 		if(s.onlineList[i].name == character.name){
 			character.SetIcon(s.onlineList[i].GetIcon());

@@ -1,7 +1,7 @@
 #include "character.hpp"
 #include "singleton.hpp"
 
-Character::Character()
+Character::Character() : paperdoll{{}}, cosmetic_paperdoll{{}}, preview_paperdoll{{}}
 {
     this->id = 0;
     this->gameworld_id = 0;
@@ -44,6 +44,8 @@ Character::Character()
     this->visibility = 0;
 
     this->command_clock.restart();
+
+	this->paperdoll_data = Paperdoll();
 }
 
 short Character::GetHP(){
@@ -52,8 +54,8 @@ short Character::GetHP(){
 void Character::SetHP(short newHP){
 	S &s = S::GetInstance();
 	hp = newHP;
-	s.signalCharacterChanged(this, ChangeType::HP);
-	signalChanged(ChangeType::HP);
+	s.signalCharacterChanged.emit(this, ChangeType::HP);
+	signalChanged.emit(ChangeType::HP);
 }
 
 short Character::GetMaxHP(){
@@ -62,8 +64,8 @@ short Character::GetMaxHP(){
 void Character::SetMaxHP(short newHP){
 	S &s = S::GetInstance();
 	max_hp = newHP;
-	s.signalCharacterChanged(this, ChangeType::MaxHP);
-	signalChanged(ChangeType::MaxHP);
+	s.signalCharacterChanged.emit(this, ChangeType::MaxHP);
+	signalChanged.emit(ChangeType::MaxHP);
 }
 
 int Character::GetEXP(){
@@ -72,8 +74,8 @@ int Character::GetEXP(){
 void Character::SetEXP(int newVal){
 	S &s = S::GetInstance();
 	exp = newVal;
-	s.signalCharacterChanged(this, ChangeType::EXP);
-	signalChanged(ChangeType::EXP);
+	s.signalCharacterChanged.emit(this, ChangeType::EXP);
+	signalChanged.emit(ChangeType::EXP);
 }
 
 int Character::GetUsage(){
@@ -82,8 +84,8 @@ int Character::GetUsage(){
 void Character::SetUsage(int newVal){
 	S &s = S::GetInstance();
 	usage = newVal;
-	s.signalCharacterChanged(this, ChangeType::Usage);
-	signalChanged(ChangeType::Usage);
+	s.signalCharacterChanged.emit(this, ChangeType::Usage);
+	signalChanged.emit(ChangeType::Usage);
 }
 
 short Character::GetMaxTP(){
@@ -92,8 +94,8 @@ short Character::GetMaxTP(){
 void Character::SetMaxTP(short newVal){
 	S &s = S::GetInstance();
 	max_tp = newVal;
-	s.signalCharacterChanged(this, ChangeType::MaxTP);
-	signalChanged(ChangeType::MaxTP);
+	s.signalCharacterChanged.emit(this, ChangeType::MaxTP);
+	signalChanged.emit(ChangeType::MaxTP);
 }
 
 short Character::GetTP(){
@@ -102,8 +104,8 @@ short Character::GetTP(){
 void Character::SetTP(short newVal){
 	S &s = S::GetInstance();
 	tp = newVal;
-	s.signalCharacterChanged(this, ChangeType::TP);
-	signalChanged(ChangeType::TP);
+	s.signalCharacterChanged.emit(this, ChangeType::TP);
+	signalChanged.emit(ChangeType::TP);
 }
 
 short Character::GetMaxSP(){
@@ -112,8 +114,8 @@ short Character::GetMaxSP(){
 void Character::SetMaxSP(short newVal){
 	S &s = S::GetInstance();
 	max_sp = newVal;
-	s.signalCharacterChanged(this, ChangeType::SP);
-	signalChanged(ChangeType::SP);
+	s.signalCharacterChanged.emit(this, ChangeType::SP);
+	signalChanged.emit(ChangeType::SP);
 }
 
 short Character::GetStatPoints(){
@@ -122,8 +124,8 @@ short Character::GetStatPoints(){
 void Character::SetStatPoints(short newVal){
 	S &s = S::GetInstance();
 	stat_points = newVal;
-	s.signalCharacterChanged(this, ChangeType::StatPoints);
-	signalChanged(ChangeType::StatPoints);
+	s.signalCharacterChanged.emit(this, ChangeType::StatPoints);
+	signalChanged.emit(ChangeType::StatPoints);
 }
 
 short Character::GetSkillPoints(){
@@ -132,8 +134,8 @@ short Character::GetSkillPoints(){
 void Character::SetSkillPoints(short newVal){
 	S &s = S::GetInstance();
 	skill_points = newVal;
-	s.signalCharacterChanged(this, ChangeType::SkillPoints);
-	signalChanged(ChangeType::SkillPoints);
+	s.signalCharacterChanged.emit(this, ChangeType::SkillPoints);
+	signalChanged.emit(ChangeType::SkillPoints);
 }
 
 short Character::GetKarma(){
@@ -142,8 +144,8 @@ short Character::GetKarma(){
 void Character::SetKarma(short newVal){
 	S &s = S::GetInstance();
 	karma = newVal;
-	s.signalCharacterChanged(this, ChangeType::Karma);
-	signalChanged(ChangeType::Karma);
+	s.signalCharacterChanged.emit(this, ChangeType::Karma);
+	signalChanged.emit(ChangeType::Karma);
 }
 
 short Character::GetMinDamage(){
@@ -152,8 +154,8 @@ short Character::GetMinDamage(){
 void Character::SetMinDamage(short newVal){
 	S &s = S::GetInstance();
 	min_dam = newVal;
-	s.signalCharacterChanged(this, ChangeType::MinDamage);
-	signalChanged(ChangeType::MinDamage);
+	s.signalCharacterChanged.emit(this, ChangeType::MinDamage);
+	signalChanged.emit(ChangeType::MinDamage);
 }
 
 short Character::GetMaxDamnage(){
@@ -162,8 +164,8 @@ short Character::GetMaxDamnage(){
 void Character::SetMaxDamage(short newVal){
 	S &s = S::GetInstance();
 	max_dam = newVal;
-	s.signalCharacterChanged(this, ChangeType::MaxDamage);
-	signalChanged(ChangeType::MaxDamage);
+	s.signalCharacterChanged.emit(this, ChangeType::MaxDamage);
+	signalChanged.emit(ChangeType::MaxDamage);
 }
 
 short Character::GetAccuracy(){
@@ -172,8 +174,8 @@ short Character::GetAccuracy(){
 void Character::SetAccuracy(short newVal){
 	S &s = S::GetInstance();
 	accuracy = newVal;
-	s.signalCharacterChanged(this, ChangeType::Accuracy);
-	signalChanged(ChangeType::Accuracy);
+	s.signalCharacterChanged.emit(this, ChangeType::Accuracy);
+	signalChanged.emit(ChangeType::Accuracy);
 }
 
 short Character::GetEvade(){
@@ -182,8 +184,8 @@ short Character::GetEvade(){
 void Character::SetEvade(short newVal){
 	S &s = S::GetInstance();
 	evade = newVal;
-	s.signalCharacterChanged(this, ChangeType::Evade);
-	signalChanged(ChangeType::Evade);
+	s.signalCharacterChanged.emit(this, ChangeType::Evade);
+	signalChanged.emit(ChangeType::Evade);
 }
 
 short Character::GetArmor(){
@@ -192,8 +194,8 @@ short Character::GetArmor(){
 void Character::SetArmor(short newVal){
 	S &s = S::GetInstance();
 	armor = newVal;
-	s.signalCharacterChanged(this, ChangeType::Armor);
-	signalChanged(ChangeType::Armor);
+	s.signalCharacterChanged.emit(this, ChangeType::Armor);
+	signalChanged.emit(ChangeType::Armor);
 }
 
 short Character::GetStr(){
@@ -202,8 +204,8 @@ short Character::GetStr(){
 void Character::SetStr(short newVal){
 	S &s = S::GetInstance();
 	str = newVal;
-	s.signalCharacterChanged(this, ChangeType::Str);
-	signalChanged(ChangeType::Str);
+	s.signalCharacterChanged.emit(this, ChangeType::Str);
+	signalChanged.emit(ChangeType::Str);
 }
 
 short Character::GetWis(){
@@ -212,8 +214,8 @@ short Character::GetWis(){
 void Character::SetWis(short newVal){
 	S &s = S::GetInstance();
 	wis = newVal;
-	s.signalCharacterChanged(this, ChangeType::Wis);
-	signalChanged(ChangeType::Wis);
+	s.signalCharacterChanged.emit(this, ChangeType::Wis);
+	signalChanged.emit(ChangeType::Wis);
 }
 
 short Character::GetInt(){
@@ -222,8 +224,8 @@ short Character::GetInt(){
 void Character::SetInt(short newVal){
 	S &s = S::GetInstance();
 	intl = newVal;
-	s.signalCharacterChanged(this, ChangeType::Int);
-	signalChanged(ChangeType::Int);
+	s.signalCharacterChanged.emit(this, ChangeType::Int);
+	signalChanged.emit(ChangeType::Int);
 }
 
 short Character::GetAgi(){
@@ -232,8 +234,8 @@ short Character::GetAgi(){
 void Character::SetAgi(short newVal){
 	S &s = S::GetInstance();
 	agi = newVal;
-	s.signalCharacterChanged(this, ChangeType::Agi);
-	signalChanged(ChangeType::Agi);
+	s.signalCharacterChanged.emit(this, ChangeType::Agi);
+	signalChanged.emit(ChangeType::Agi);
 }
 
 short Character::GetCon(){
@@ -242,8 +244,28 @@ short Character::GetCon(){
 void Character::SetCon(short newVal){
 	S &s = S::GetInstance();
 	con = newVal;
-	s.signalCharacterChanged(this, ChangeType::Con);
-	signalChanged(ChangeType::Con);
+	s.signalCharacterChanged.emit(this, ChangeType::Con);
+	signalChanged.emit(ChangeType::Con);
+}
+
+short Character::GetClass(){
+	return clas;
+}
+void Character::SetClass(short newVal){
+	S &s = S::GetInstance();
+	clas = newVal;
+	s.signalCharacterChanged.emit(this, ChangeType::Clas);
+	signalChanged.emit(ChangeType::Clas);
+}
+
+Gender Character::GetGender(){
+	return gender;
+}
+void Character::SetGender(char newVal){
+	S &s = S::GetInstance();
+	gender = static_cast<Gender>(newVal);
+	s.signalCharacterChanged.emit(this, ChangeType::Gender);
+	signalChanged.emit(ChangeType::Gender);
 }
 
 short Character::GetCha(){
@@ -252,8 +274,8 @@ short Character::GetCha(){
 void Character::SetCha(short newVal){
 	S &s = S::GetInstance();
 	cha = newVal;
-	s.signalCharacterChanged(this, ChangeType::Cha);
-	signalChanged(ChangeType::Cha);
+	s.signalCharacterChanged.emit(this, ChangeType::Cha);
+	signalChanged.emit(ChangeType::Cha);
 }
 
 unsigned char Character::GetHPPercent(){
@@ -263,8 +285,63 @@ unsigned char Character::GetHPPercent(){
 void Character::SetHPPercent(unsigned char newPercent){
 	S &s = S::GetInstance();
 	hp_percent = newPercent;
-	signalChanged(ChangeType::HP);
-	s.signalCharacterChanged(this, ChangeType::HP);
+	signalChanged.emit(ChangeType::HP);
+	s.signalCharacterChanged.emit(this, ChangeType::HP);
+}
+
+void Character::SetGuild(std::string newVal){
+	S &s = S::GetInstance();
+	guild = newVal;
+	s.signalCharacterChanged.emit(this, ChangeType::Guild);
+	signalChanged.emit(ChangeType::Guild);
+}
+
+std::string Character::GetGuild(){
+	return guild;
+}
+
+void Character::SetGuildRank(std::string newVal){
+	S &s = S::GetInstance();
+	guild_rank = newVal;
+	s.signalCharacterChanged.emit(this, ChangeType::GuildRank);
+	signalChanged.emit(ChangeType::GuildRank);
+}
+
+std::string Character::GetGuildRank(){
+	return guild_rank;
+}
+
+void Character::SetHome(std::string newVal){
+	S &s = S::GetInstance();
+	home = newVal;
+	s.signalCharacterChanged.emit(this, ChangeType::Home);
+	signalChanged.emit(ChangeType::Home);
+}
+
+std::string Character::GetHome(){
+	return home;
+}
+
+void Character::SetTitle(std::string newVal){
+	S &s = S::GetInstance();
+	title = newVal;
+	s.signalCharacterChanged.emit(this, ChangeType::Title);
+	signalChanged.emit(ChangeType::Title);
+}
+
+std::string Character::GetTitle(){
+	return title;
+}
+
+void Character::SetPartner(std::string newVal){
+	S &s = S::GetInstance();
+	partner = newVal;
+	signalChanged.emit(ChangeType::Partner);
+	s.signalCharacterChanged.emit(this, ChangeType::Partner);
+}
+
+std::string Character::GetPartner(){
+	return partner;
 }
 
 bool Character::GetPartyLeader(){
@@ -282,6 +359,6 @@ unsigned char Character::GetLevel(){
 void Character::SetLevel(unsigned char newLevel){
 	S &s = S::GetInstance();
 	level = newLevel;
-	signalChanged(ChangeType::Level);
-	s.signalCharacterChanged(this, ChangeType::Level);
+	signalChanged.emit(ChangeType::Level);
+	s.signalCharacterChanged.emit(this, ChangeType::Level);
 }

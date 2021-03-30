@@ -57,10 +57,13 @@ public:
 	std::string guild;
 	std::string guild_rank;
 	std::string guild_tag;
+	std::string home;
+	std::string partner;
 	std::array<int, 15> paperdoll;
 	std::array<int, 15> cosmetic_paperdoll;
 	std::array<int, 15> preview_paperdoll;
 	sigc::signal<void, ChangeType> signalChanged;
+	Paperdoll paperdoll_data;
 
 	unsigned char clas;
 
@@ -131,6 +134,20 @@ public:
 	void SetCon(short newVal);
 	short GetCha();
 	void SetCha(short newVal);
+	short GetClass();
+	void SetClass(short newVal);
+	Gender GetGender();
+	void SetGender(char newVal);
+	std::string GetGuild();
+	void SetGuild(std::string newVal);
+	std::string GetGuildRank();
+	void SetGuildRank(std::string newVal);
+	std::string GetHome();
+	void SetHome(std::string newVal);
+	std::string GetTitle();
+	void SetTitle(std::string newVal);
+	std::string GetPartner();
+	void SetPartner(std::string newVal);
 	PaperdollIcon GetIcon() { return icon; };
 	void SetIcon(PaperdollIcon newIcon){ icon = newIcon; };
 	unsigned char GetHPPercent();

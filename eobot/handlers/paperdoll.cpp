@@ -1,5 +1,35 @@
 #include "handlers.hpp"
 #include "../singleton.hpp"
+#include <iostream>
+
+void Paperdoll_Report(PacketReader reader){
+	S &s = S::GetInstance();
+	std::string name = reader.GetBreakString(); // Name
+	for(Character character : s.map.characters){
+		if(character.name == name){
+			character.SetHome(reader.GetBreakString());
+			character.SetPartner(reader.GetBreakString());
+			character.SetTitle(reader.GetBreakString());
+			character.SetGuild(reader.GetBreakString());
+			character.SetGuildRank(reader.GetBreakString());
+			character.SetClass(reader.GetShort());
+			character.SetGender(reader.GetChar());
+			reader.GetInt(); //0
+			for(int i = 0; i < character.paperdoll.size(); i++){
+				character.paperdoll[i] = reader.GetShort();
+			}
+			for(int i = 0; i < character.cosmetic_paperdoll.size(); i++){
+				character.cosmetic_paperdoll[i] = reader.GetShort();
+			}
+			for(int i = 0; i < character.preview_paperdoll.size(); i++){
+				character.preview_paperdoll[i] = reader.GetShort();
+			}
+
+			character.SetIcon(static_cast<PaperdollIcon>(reader.GetChar()));
+			break;
+		}
+	}
+}
 
 void Paperdoll_Reply(PacketReader reader){
 	S &s = S::GetInstance();

@@ -290,6 +290,7 @@ void Welcome_Reply(PacketReader reader)
 		s.eoclient.RegisterHandler(PacketFamily::Paperdoll, PacketAction::Remove, Paperdoll_Remove);
 		s.eoclient.RegisterHandler(PacketFamily::Message, PacketAction::Accept, Message_Box);
 		s.eoclient.RegisterHandler(PacketFamily::Paperdoll, PacketAction::Reply, Paperdoll_Reply);
+		s.eoclient.RegisterHandler(PacketFamily::Paperdoll, PacketAction::Report, Paperdoll_Report);
 
 		//s.eoclient.RegisterHandler(PacketFamily::Recover, PacketAction::Agree, Recover_Agree); // non local player heals
 

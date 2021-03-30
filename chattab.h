@@ -7,14 +7,10 @@
 class ChatTab : public Gtk::Box
 {
 public:
-	ChatTab(Glib::ustring title){
-		set_orientation(Gtk::Orientation::ORIENTATION_HORIZONTAL);
-		set_spacing(3);
-		
-		
+	ChatTab(Glib::ustring title) : Gtk::Box(Gtk::Orientation::ORIENTATION_HORIZONTAL, 3){
 		// Title
 		label = Gtk::manage(new Gtk::Label(title));
-		
+
 		// Buttons
 		buttonBox = Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_HORIZONTAL));
 
@@ -32,11 +28,11 @@ public:
 		context2->add_class("flat");
 		context2->add_class("closeButton");
 		buttonBox->pack_start(*closeButton, false, false);
-		
-		
+
+
 		pack_start(*label);
 		pack_end(*buttonBox);
-		
+
 		show_all();
 	}
 	Gtk::Button* GetCloseButton(){
@@ -66,7 +62,7 @@ protected:
 	Gtk::Box* boxChild, *buttonBox;
 	sf::Sound sound;
 	sf::SoundBuffer buffer;
-	
+
 };
 
 #endif
